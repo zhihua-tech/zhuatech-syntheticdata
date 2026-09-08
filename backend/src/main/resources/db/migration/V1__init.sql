@@ -1,0 +1,2 @@
+-- Copyright (c) 上海如静知华信息科技有限公司 | https://www.zhuatech.cn/
+CREATE TABLE generation_audit(id BIGINT NOT NULL AUTO_INCREMENT,request_id VARCHAR(80) NOT NULL,decision VARCHAR(30) NOT NULL,row_count INT NOT NULL,risk_level VARCHAR(20) NOT NULL,summary VARCHAR(500) NOT NULL,created_by VARCHAR(80) NOT NULL,created_at TIMESTAMP(6) NOT NULL,PRIMARY KEY(id),CONSTRAINT uk_generation_request UNIQUE(request_id));CREATE INDEX idx_generation_created ON generation_audit(created_at);
