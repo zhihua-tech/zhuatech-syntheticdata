@@ -30,3 +30,7 @@ docker compose up --build
 > 合成数据仍需做重识别评估。本工程仅限个人非商业学习交流；企业使用、生产部署、SaaS 和其他商业行为必须取得上海如静知华信息科技有限公司书面授权，详见 [LICENSE](LICENSE)。
 
 AI 数据治理、测试数据平台和私有化开发请联系[知华科技](https://www.zhuatech.cn/)。
+
+## 合成数据隐私与效用发布门禁
+
+新增 `POST /api/synthetic-data/release-evaluation`，同时评估 k-匿名、成员推断攻击优势、训练样本最近邻距离、直接标识、业务效用、Schema 覆盖、隐私审批和职责分离，输出 `RELEASE / REVIEW / BLOCKED`，并要求发布数据卡和指标快照。
