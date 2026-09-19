@@ -1,8 +1,29 @@
 /* Copyright © 2026 上海如静知华信息科技有限公司 · https://www.zhuatech.cn/ */package cn.zhuatech.syntheticdata.service;import cn.zhuatech.syntheticdata.model.GenerationAudit;import cn.zhuatech.syntheticdata.repository.GenerationAuditRepository;import org.junit.jupiter.api.*;import java.util.*;import static org.assertj.core.api.Assertions.assertThat;import static org.mockito.ArgumentMatchers.any;import static org.mockito.Mockito.*;
-class SyntheticDataServiceTest{GenerationAuditRepository repo;SyntheticDataService service;@BeforeEach void init(){repo=mock(GenerationAuditRepository.class);service=new SyntheticDataService(repo);when(repo.findByRequestId(any())).thenReturn(Optional.empty());when(repo.save(any())).thenAnswer(i->i.getArgument(0));}
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
+class SyntheticDataServiceTest{GenerationAuditRepository repo;SyntheticDataService service;/**
+                                                                                            * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+                                                                                            */
+@BeforeEach void init(){repo=mock(GenerationAuditRepository.class);service=new SyntheticDataService(repo);when(repo.findByRequestId(any())).thenReturn(Optional.empty());when(repo.save(any())).thenAnswer(i->i.getArgument(0));}
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  SyntheticDataService.FieldSpec field(String name,SyntheticDataService.FieldType type,boolean unique,boolean sensitive){return new SyntheticDataService.FieldSpec(name,type,0,unique,sensitive,1,100,List.of("A","B","C","D"),"2025-01-01","2026-12-31");}
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  @Test void generatesDeterministicRows(){var r=new SyntheticDataService.GenerationRequest("R1",3,42,List.of(field("name",SyntheticDataService.FieldType.NAME,false,false),field("amount",SyntheticDataService.FieldType.MONEY,false,false)),true,"owner","approver");var a=service.generate(r,"admin");assertThat(a.decision()).isEqualTo(SyntheticDataService.Decision.EXPORTABLE);assertThat(a.exportRows()).hasSize(3);}
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  @Test void masksSensitivePreview(){var r=new SyntheticDataService.GenerationRequest("R2",100,7,List.of(field("phone",SyntheticDataService.FieldType.PHONE,false,true),field("group",SyntheticDataService.FieldType.CATEGORY,false,false)),true,"owner","approver");var a=service.generate(r,"admin");assertThat(a.preview().getFirst().get("phone").toString()).contains("***");assertThat(a.riskLevel()).isEqualTo(SyntheticDataService.RiskLevel.MEDIUM);}
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  @Test void blocksInvalidUniqueCategoryCapacity(){var r=new SyntheticDataService.GenerationRequest("R3",10,1,List.of(field("group",SyntheticDataService.FieldType.CATEGORY,true,false)),true,"owner","approver");assertThat(service.generate(r,"admin").decision()).isEqualTo(SyntheticDataService.Decision.BLOCKED);}
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  @Test void preventsSensitiveUniqueExport(){var r=new SyntheticDataService.GenerationRequest("R4",100,1,List.of(field("email",SyntheticDataService.FieldType.EMAIL,true,true)),true,"owner","approver");var a=service.generate(r,"admin");assertThat(a.decision()).isEqualTo(SyntheticDataService.Decision.PREVIEW_ONLY);assertThat(a.exportRows()).isEmpty();}
 }

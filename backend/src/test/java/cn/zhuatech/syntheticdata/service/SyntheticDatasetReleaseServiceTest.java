@@ -1,7 +1,22 @@
 /* Copyright © 2026 上海如静知华信息科技有限公司 · https://www.zhuatech.cn/ */
 package cn.zhuatech.syntheticdata.service;import org.junit.jupiter.api.Test;import java.math.BigDecimal;import static org.assertj.core.api.Assertions.assertThat;
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 class SyntheticDatasetReleaseServiceTest{private final SyntheticDatasetReleaseService s=new SyntheticDatasetReleaseService();
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  @Test void releasesPrivateUsefulDataset(){var r=s.evaluate(req(10,"0.30","0.01","0.90","0.95",false,true,"a","b"));assertThat(r.decision()).isEqualTo(SyntheticDatasetReleaseService.Decision.RELEASE);}
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  @Test void reviewsWeakUtilityOrApproval(){var r=s.evaluate(req(10,"0.30","0.01","0.60","0.70",false,false,"a","a"));assertThat(r.decision()).isEqualTo(SyntheticDatasetReleaseService.Decision.REVIEW);assertThat(r.reviewReasons()).hasSize(4);}
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  @Test void blocksPrivacyLeakage(){var r=s.evaluate(req(2,"0.01","0.20","0.90","0.95",true,true,"a","b"));assertThat(r.decision()).isEqualTo(SyntheticDatasetReleaseService.Decision.BLOCKED);assertThat(r.blockers()).hasSize(4);}
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  private SyntheticDatasetReleaseService.Request req(int k,String distance,String attack,String utility,String schema,boolean id,boolean approved,String requester,String approver){return new SyntheticDatasetReleaseService.Request("D",1000,k,5,new BigDecimal(distance),new BigDecimal("0.10"),new BigDecimal(attack),new BigDecimal("0.05"),new BigDecimal(utility),new BigDecimal("0.80"),new BigDecimal(schema),new BigDecimal("0.90"),id,approved,requester,approver);}}
