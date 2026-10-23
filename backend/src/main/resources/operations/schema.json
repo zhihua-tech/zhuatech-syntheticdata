@@ -1,0 +1,93 @@
+{
+  "slug": "syntheticdata",
+  "title": "小群体抑制与合成数据可用量",
+  "fields": [
+    {
+      "key": "id",
+      "label": "记录编号",
+      "type": "ID"
+    },
+    {
+      "key": "rows",
+      "label": "总行数",
+      "type": "NUMBER",
+      "scale": 0,
+      "min": "1",
+      "max": "1000000"
+    },
+    {
+      "key": "suppressed",
+      "label": "拟抑制行数",
+      "type": "NUMBER",
+      "scale": 0,
+      "min": "0",
+      "max": "1000000"
+    },
+    {
+      "key": "invalidRemaining",
+      "label": "抑制后仍无效行数",
+      "type": "NUMBER",
+      "scale": 0,
+      "min": "0",
+      "max": "1000000"
+    },
+    {
+      "key": "minimumGroup",
+      "label": "抑制后最小群体",
+      "type": "NUMBER",
+      "scale": 0,
+      "min": "0",
+      "max": "1000000"
+    },
+    {
+      "key": "k",
+      "label": "要求最小群体k",
+      "type": "NUMBER",
+      "scale": 0,
+      "min": "2",
+      "max": "10000"
+    },
+    {
+      "key": "maxLossPct",
+      "label": "最高抑制比例%",
+      "type": "NUMBER",
+      "scale": 4,
+      "min": "0",
+      "max": "100"
+    }
+  ],
+  "columns": [
+    {
+      "key": "usableRows",
+      "label": "可用行数"
+    },
+    {
+      "key": "suppressionPct",
+      "label": "抑制损失%"
+    },
+    {
+      "key": "retainedRows",
+      "label": "保留行数"
+    }
+  ],
+  "description": "核对小于k的最小群体、拟抑制行及空值行，计算剩余可用行和抑制损失；此规则不是差分隐私或匿名化证明。",
+  "owner": "上海如静知华信息科技有限公司",
+  "website": "https://www.zhuatech.cn/",
+  "authorization": "商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。",
+  "version": 1,
+  "notes": "输入均须为已获授权的同口径数据。金额固定人民币元；比例为百分数。核算结果只用于复核，未审批、未写库、未发起外部调用，也未触发付款、签名、资料销毁或设备控制。建议不构成法律、安全、会计或碳核证结论。",
+  "sample": {
+    "asOf": "2026-10-23",
+    "records": [
+      {
+        "id": "ITEM-001",
+        "rows": "1000",
+        "suppressed": "50",
+        "invalidRemaining": "10",
+        "minimumGroup": "5",
+        "k": "5",
+        "maxLossPct": "10"
+      }
+    ]
+  }
+}
