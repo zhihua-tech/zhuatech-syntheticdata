@@ -1,0 +1,69 @@
+[
+  {
+    "patch": {},
+    "expected": {
+      "decision": "REVIEW",
+      "usableRows": "#940"
+    },
+    "error": false,
+    "baseline": {
+      "decision": "REVIEW",
+      "usableRows": "#940"
+    }
+  },
+  {
+    "patch": {
+      "invalidRemaining": "0"
+    },
+    "expected": {
+      "decision": "PASS"
+    },
+    "error": false,
+    "baseline": {
+      "decision": "REVIEW",
+      "usableRows": "#940"
+    }
+  },
+  {
+    "patch": {
+      "minimumGroup": "4"
+    },
+    "expected": {
+      "decision": "HOLD"
+    },
+    "error": false,
+    "baseline": {
+      "decision": "REVIEW",
+      "usableRows": "#940"
+    }
+  },
+  {
+    "patch": {
+      "suppressed": "101",
+      "invalidRemaining": "0"
+    },
+    "expected": {
+      "decision": "REVIEW"
+    },
+    "error": false,
+    "baseline": {
+      "decision": "REVIEW",
+      "usableRows": "#940"
+    }
+  },
+  {
+    "patch": {
+      "suppressed": "1000",
+      "minimumGroup": "0",
+      "invalidRemaining": "0"
+    },
+    "expected": {
+      "decision": "HOLD"
+    },
+    "error": false,
+    "baseline": {
+      "decision": "REVIEW",
+      "usableRows": "#940"
+    }
+  }
+]
